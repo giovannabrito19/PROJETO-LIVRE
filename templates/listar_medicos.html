@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Lista de Médicos</h2>
+
+{% if medicos %}
+    <ul>
+        {% for medico in medicos %}
+            <li>
+                <strong>Nome:</strong> {{ medico.nome }} <br>
+                <strong>CPF:</strong> {{ medico.cpf }} <br>
+                <strong>Telefone:</strong> {{ medico.telefone }} <br>
+                <strong>Idade:</strong> {{ medico.idade }} <br>
+                <strong>CRM:</strong> {{ medico.crm }} <br>
+                <strong>Especialidade:</strong> {{ medico.especialidade.nome }} <br>
+                <a href="{{ url_for('editar_medico', idx=loop.index0) }}">Editar</a>
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum médico cadastrado.</p>
+{% endif %}
+
+<a href="{{ url_for('index') }}">Voltar ao menu</a>
+{% endblock %}

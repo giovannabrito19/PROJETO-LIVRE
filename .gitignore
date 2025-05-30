@@ -1,5 +1,7 @@
-/apagar.py
 /pacientes.json
 /medicos.json
 /especialidades.json
 /consultas.json
+# Ignorar arquivos compilados do Python
+*.pyc
+__pycache__/

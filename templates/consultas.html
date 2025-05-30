@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Consultas Agendadas</h2>
+
+    {% if consultas %}
+        <ul>
+            {% for consulta in consultas %}
+                <li>
+                    {{ loop.index0 }} - {{ consulta.data_hora }} |
+                    Paciente: {{ consulta.paciente.nome }} |
+                    Médico: {{ consulta.medico.nome }} |
+                    Status: {{ consulta.status }}
+
+                    {% if consulta.status != "Cancelada" %}
+                        <a href="{{ url_for('cancelar_consulta', consulta_id=loop.index0) }}">Cancelar</a>
+                    {% endif %}
+
+                    {% if consulta.status == "Agendada" %}
+                        | <a href="{{ url_for('finalizar_consulta', consulta_id=loop.index0) }}">Finalizar</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhuma consulta cadastrada.</p>
+    {% endif %}
+{% endblock %}

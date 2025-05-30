@@ -106,3 +106,10 @@ especialidades = carregar_especialidades()
 medicos = carregar_medicos(especialidades)
 consultas = carregar_consultas(pacientes, medicos)
 
+def carregar_dados():
+    especialidades = carregar_especialidades()
+    medicos = carregar_medicos(especialidades)
+    pacientes = carregar_pacientes([])  # consultas ainda não carregadas
+    consultas = carregar_consultas(pacientes, medicos)
+    return consultas, pacientes, medicos, especialidades
+

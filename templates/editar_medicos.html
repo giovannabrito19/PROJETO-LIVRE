@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Editar Médico</h2>
+
+<p><strong>Nome:</strong> {{ medico.nome }}</p>
+<p><strong>CPF:</strong> {{ medico.cpf }}</p>
+<p><strong>Telefone:</strong> {{ medico.telefone }}</p>
+<p><strong>Idade:</strong> {{ medico.idade }}</p>
+<p><strong>CRM:</strong> {{ medico.crm }}</p>
+<p><strong>Especialidade:</strong> {{ medico.especialidade.nome }}</p>
+
+<form method="post">
+    <label for="campo">Escolha o campo que deseja editar:</label><br>
+    <select name="campo" id="campo" required>
+        <option value="nome">Nome</option>
+        <option value="cpf">CPF</option>
+        <option value="telefone">Telefone</option>
+        <option value="idade">Idade</option>
+        <option value="crm">CRM</option>
+        <option value="especialidade">Especialidade</option>
+    </select><br><br>
+
+    <label for="valor">Novo valor:</label><br>
+    <input type="text" name="valor" id="valor" required><br><br>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="{{ url_for('listar_medicos') }}">Cancelar</a>
+{% endblock %}

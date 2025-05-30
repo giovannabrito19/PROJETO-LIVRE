@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Editar Paciente</h2>
+
+<p>Nome atual: {{ paciente.nome }}</p>
+<p>CPF: {{ paciente.cpf }}</p>
+<p>Telefone: {{ paciente.telefone }}</p>
+<p>Idade: {{ paciente.idade }}</p>
+<p>Plano de Saúde: {{ paciente.plano_saude }}</p>
+
+<form method="POST">
+    <label for="campo">Campo a editar:</label>
+    <select name="campo" required>
+        <option value="nome">Nome</option>
+        <option value="cpf">CPF</option>
+        <option value="telefone">Telefone</option>
+        <option value="idade">Idade</option>
+        <option value="plano_saude">Plano de Saúde</option>
+    </select><br><br>
+
+    <label for="valor">Novo valor:</label>
+    <input type="text" name="valor" required><br><br>
+
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+<a href="{{ url_for('listar_pacientes') }}">Voltar</a>
+{% endblock %}

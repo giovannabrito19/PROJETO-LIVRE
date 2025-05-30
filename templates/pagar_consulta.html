@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Pagamento de Consulta</h2>
+
+<form method="POST">
+    <label for="consulta">Escolha a consulta:</label><br>
+    <select name="consulta" required>
+        {% for c in consultas %}
+            <option value="{{ loop.index0 }}">
+                {{ c.data_hora }} - {{ c.paciente.nome }} com Dr(a). {{ c.medico.nome }} ({{ c.status }})
+            </option>
+        {% endfor %}
+    </select><br><br>
+
+    <label>Valor: R$</label><br>
+    <input type="number" name="valor" step="0.01" required><br><br>
+
+    <label>Data do pagamento:</label><br>
+    <input type="text" name="data" placeholder="DD/MM/AA" required><br><br>
+
+    <label>Tipo de pagamento:</label><br>
+    <select name="tipo" id="tipo" onchange="toggleCampos()" required>
+        <option value="cartao">Cartão</option>
+        <option value="dinheiro">Dinheiro</option>
+        <option value="pix">Pix</option>
+    </select><br><br>
+
+    <div id="cartao" class="tipo-campo">
+        <label>Número do cartão:</label><br>
+        <input type="text" name="numero"><br><br>
+    </div>
+
+    <div id="pix" class="tipo-campo" style="display: none;">
+        <label>Chave PIX:</label><br>
+        <input type="text" name="chave"><br><br>
+    </div>
+
+    <button type="submit">Pagar</button>
+</form>
+
+<script>
+function toggleCampos() {
+    var tipo = document.getElementById("tipo").value;
+    document.getElementById("cartao").style.display = tipo === "cartao" ? "block" : "none";
+    document.getElementById("pix").style.display = tipo === "pix" ? "block" : "none";
+}
+</script>
+{% endblock %}

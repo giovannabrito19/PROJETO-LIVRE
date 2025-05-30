@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Lista de Pacientes</h2>
+
+{% if pacientes %}
+    <ul>
+        {% for paciente in pacientes %}
+            <li>
+                <strong>Nome:</strong> {{ paciente.nome }} <br>
+                <strong>CPF:</strong> {{ paciente.cpf }} <br>
+                <strong>Telefone:</strong> {{ paciente.telefone }} <br>
+                <strong>Idade:</strong> {{ paciente.idade }} <br>
+                <strong>Plano de Saúde:</strong> {{ paciente.plano_saude }} <br>
+                <a href="{{ url_for('editar_paciente', idx=loop.index0) }}">Editar</a>
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum paciente cadastrado.</p>
+{% endif %}
+
+<a href="{{ url_for('index') }}">Voltar ao menu</a>
+{% endblock %}

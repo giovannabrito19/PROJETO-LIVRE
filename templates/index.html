@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Menu Principal</h2>
+<ul>
+    <li><a href="{{ url_for('cadastrar_paciente') }}">Cadastrar Paciente</a></li>
+    <li><a href="{{ url_for('cadastrar_medico') }}">Cadastrar Médico</a></li>
+    <li><a href="{{ url_for('agendar_consulta') }}">Agendar Consulta</a></li>
+    <li><a href="{{ url_for('listar_consultas') }}">Gerenciar Consultas</a></li>
+    <li><a href="{{ url_for('listar_medicos') }}">Listar/Editar Médicos</a></li>
+    <li><a href="{{ url_for('listar_pacientes') }}">Editar Paciente</a></li>
+    <li><a href="{{ url_for('pagamento') }}">Pagamento</a></li>
+</ul>
+{% endblock %}

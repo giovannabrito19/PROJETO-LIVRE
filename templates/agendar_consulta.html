@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Agendar Consulta</h2>
+    <form method="post">
+        <label>Data e Hora:</label><br>
+        <input type="text" name="data_hora"><br><br>
+
+        <label>Paciente:</label><br>
+        <input type="text" name="paciente"><br><br>
+
+        <label>Medico:</label><br>
+        <input type="text" name="medico"><br><br>
+
+
+        <input type="submit" value="Agendar">
+    </form>
+{% endblock %}
