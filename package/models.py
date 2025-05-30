@@ -1,4 +1,6 @@
 import json
+from abc import ABC, abstractmethod
+
 class Pessoa:
     def __init__(self, nome, cpf, telefone, idade):
         self.nome = nome
@@ -153,12 +155,15 @@ class Medico(Pessoa):
         especialidade.adicionar_medico(medico)
         return medico
 
-
-class Pagamento:
+class Pagamento(ABC):
     def __init__(self, valor, data, consulta):
         self.valor = valor
         self.data = data
         self.consulta = consulta
+
+    @abstractmethod
+    def processar_pagamento(self):
+        pass
 
 
 class Cartao(Pagamento):
